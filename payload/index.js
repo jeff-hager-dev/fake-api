@@ -1,4 +1,4 @@
-var results = require('./results').sources,
+var results = require('./results').sources
   fs = require('fs');
 
 var payload = {};
@@ -12,6 +12,16 @@ payload.getPayload = function (reqUrl, callback) {
     }
   }
   callback(jsonData);
+};
+
+payload.endpoints = function(){
+  var endpoints = [];
+
+  for (var idx in results) {
+    endpoints.push(results[idx].key);
+  }
+
+  return endpoints;
 };
 
 module.exports = payload;

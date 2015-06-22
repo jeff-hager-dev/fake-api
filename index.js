@@ -4,9 +4,12 @@ var express = require('express'),
 
 router.get('/healthcheck', function (req, res, next) {
   res.status(200).json({
-    "message": "Up and running"
+    "message": "Up and running",
+    "endpoints": jsonPayload.endpoints()
   });
 });
+
+
 
 router.get('*', function (req, res) {
   jsonPayload.getPayload(req.originalUrl, function (jsonPayload) {
